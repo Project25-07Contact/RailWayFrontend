@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import LoginModal from './components/LoginModal';
-import RegisterModal from './components/RegisterModal';
+import LoginModal from './Components/LoginModal';
+import RegisterModal from './Components/RegisterModal';
 import TicketsModal from './Components/TicketsModal'; // ← новая модалка
 
 import './App.css';
