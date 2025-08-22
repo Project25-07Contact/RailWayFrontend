@@ -8,9 +8,10 @@ function RouteSelectDetailed({ onChange }) {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedSeat, setSelectedSeat] = useState(null);
+  const API_BASE_URL = 'https://railwayservicebackend-esgkdxebbafpfwb3.polandcentral-01.azurewebsites.net/';
 
   useEffect(() => {
-    fetch('https://localhost:7251/api/route', {
+    fetch(`${API_BASE_URL}api/route`, {
       credentials: 'include'
     })
       .then(res => res.json())
@@ -21,7 +22,7 @@ function RouteSelectDetailed({ onChange }) {
   useEffect(() => {
     if (!selected) return;
 
-    fetch(`https://localhost:7251/api/tickets/${selected.id}/seats`, {
+    fetch(`${API_BASE_URL}api/tickets/${selected.id}/seats`, {
       credentials: 'include'
     })
       .then(res => res.json())
@@ -48,9 +49,9 @@ function RouteSelectDetailed({ onChange }) {
     }
 
     try {
-      const response = await fetch(`https://localhost:7251/api/tickets`, {
+      const response = await fetch(`${API_BASE_URL}api/tickets`, {
         method: 'POST',
-        credentials: 'include', // ⚡ важно, чтобы cookie/JWT ушёл автоматически
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -71,7 +72,7 @@ function RouteSelectDetailed({ onChange }) {
       setModalOpen(false);
 
       // Обновляем список мест
-      const newSeats = await fetch(`https://localhost:7251/api/tickets/${selected.id}/seats`, {
+      const newSeats = await fetch(`${API_BASE_URL}api/tickets/${selected.id}/seats`, {
         credentials: 'include'
       }).then(r => r.json());
       setSeats(newSeats);

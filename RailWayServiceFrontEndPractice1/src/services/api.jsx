@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://localhost:7251/';
+const API_BASE_URL = 'https://railwayservicebackend-esgkdxebbafpfwb3.polandcentral-01.azurewebsites.net/';
 
 export const api = {
   get: (url) => fetch(`${API_BASE_URL}${url}`, { 
